@@ -7,13 +7,13 @@ public class Main {
 
 	static Scanner teclado = new Scanner(System.in);
 
-	// Listas globales para almacenar lo que el usuario cree de forma dinámica
+	
 	static ArrayList<Habilidad> listaHabilidades = new ArrayList<>();
 	static ArrayList<Pokemon> listaPokemons = new ArrayList<>();
 	static ArrayList<Entrenador> listaEntrenadores = new ArrayList<>();
 
 	public static void main(String[] args) {
-		// Cargamos datos predeterminados para que no empieces desde cero
+		
 		cargarDatosPredeterminados();
 
 		int opcion = 0;
@@ -54,9 +54,6 @@ public class Main {
 		} while (opcion != 6);
 	}
 
-	// =========================================================================
-	// GESTIÓN DEL MENÚ
-	// =========================================================================
 
 	public static void menuCrearHabilidad() {
 		System.out.println("\n--- NUEVA HABILIDAD ---");
@@ -83,7 +80,7 @@ public class Main {
 		System.out.print("Defensa: ");
 		int defensa = leerEntero(0, 300);
 
-		// Según tu constructor: Pokemon(nombre, tipo, vidaMaxima, defensa, estado)
+		
 		Pokemon nuevoPok = new Pokemon(nombre, tipo, vidaMax, defensa, "Activo");
 
 		if (listaHabilidades.isEmpty()) {
@@ -111,7 +108,7 @@ public class Main {
 		System.out.print("Nombre del entrenador: ");
 		String nombre = teclado.nextLine();
 
-		// Todos los entrenadores se inicializan en rango 'Z' según tu estructura
+		
 		Entrenador nuevoEntrenador = new Entrenador(nombre, 'Z');
 
 		if (listaPokemons.isEmpty()) {
@@ -181,13 +178,11 @@ public class Main {
 			return;
 		}
 
-		// Si pasamos los filtros, empieza la batalla clásica
+		
 		bucleCombate(retador1, retador2);
 	}
 
-	// =========================================================================
-	// SISTEMA DE COMBATE RE-ENCAPSULADO
-	// =========================================================================
+	
 
 	private static void bucleCombate(Entrenador ash, Entrenador gary) {
 		System.out.println();
@@ -273,14 +268,9 @@ public class Main {
 		System.out.println("  Nuevo rango de " + perdedor.getNombre() + ": " + perdedor.getRango());
 		System.out.println("===========================================");
 
-		// Restauramos la salud de ambos equipos para posteriores batallas en el menú
 		restaurarSaludEquipo(ganador);
 		restaurarSaludEquipo(perdedor);
 	}
-
-	// =========================================================================
-	// MÉTODOS COMPLEMENTARIOS
-	// =========================================================================
 
 	public static void restaurarSaludEquipo(Entrenador e) {
 		for (Pokemon p : e.getEquipo()) {
@@ -346,7 +336,6 @@ public class Main {
 	}
 
 	private static void cargarDatosPredeterminados() {
-		// Instanciación de habilidades base
 		Habilidad rayo = new Habilidad("Rayo", "Eléctrico", 90);
 		Habilidad placaje = new Habilidad("Placaje", "Normal", 40);
 		Habilidad llamarada = new Habilidad("Llamarada", "Fuego", 110);
@@ -357,7 +346,6 @@ public class Main {
 		listaHabilidades.add(llamarada);
 		listaHabilidades.add(surf);
 
-		// Instanciación de criaturas base
 		Pokemon pikachu = new Pokemon("Pikachu", "Eléctrico", 100, 20, "Activo");
 		pikachu.annadirHabilidad(rayo);
 		pikachu.annadirHabilidad(placaje);
@@ -374,7 +362,6 @@ public class Main {
 		listaPokemons.add(charmander);
 		listaPokemons.add(squirtle);
 
-		// Instanciación de entrenadores base
 		Entrenador ash = new Entrenador("Ash", 'Z');
 		ash.anyadirPokemon(pikachu);
 		ash.anyadirPokemon(charmander);
